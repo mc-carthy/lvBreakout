@@ -38,6 +38,10 @@ function love.load()
         ['particle'] = love.graphics.newImage('assets/images/particle.png')
     }
 
+    frames = {
+        ['paddles'] = GenerateQuadsPaddles(textures.main)
+    }
+
     Push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         vsync = true,
         fullscreen = false,
@@ -45,7 +49,8 @@ function love.load()
     })
 
     stateMachine = StateMachine {
-        ['start'] = function() return StartState() end
+        ['start'] = function() return StartState() end,
+        ['play'] = function() return PlayState() end
     }
 
     stateMachine:change('start')
@@ -80,7 +85,7 @@ function love.draw()
     love.graphics.draw(textures['background'], 
         0, 0, 
         0,
-        VIRTUAL_WIDTH / (backgroundWidth), VIRTUAL_HEIGHT / (backgroundHeight))
+        VIRTUAL_WIDTH / (backgroundWidth - 1), VIRTUAL_HEIGHT / (backgroundHeight - 1))
     
     stateMachine:draw()
     

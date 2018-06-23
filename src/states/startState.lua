@@ -8,6 +8,14 @@ function StartState:update(dt)
         sounds['paddle-hit']:play()
     end
 
+    if love.keyboard.wasPressed('space') or love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+        if highlighted == 1 then
+            stateMachine:change('play')
+        elseif highlighted == 2 then
+            love.event.quit()
+        end
+    end
+
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
     end
