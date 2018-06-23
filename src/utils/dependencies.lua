@@ -1,0 +1,7 @@
+require('src.utils.debug')
+require('src.utils.constants')
+Push = require('lib.push')
+Class = require('lib.class')
+require('lib.stateMachine')
+require('src.states.baseState')
+require('src.states.startState')

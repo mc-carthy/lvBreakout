@@ -1,15 +1,4 @@
--- require('src.utils.debug')
-Push = require('lib.push')
-Class = require('lib.class')
-require('src.states.baseState')
-require('src.states.startState')
-require('lib.stateMachine')
-
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
-
-VIRTUAL_WIDTH = 512
-VIRTUAL_HEIGHT = 288
+require('src.utils.dependencies')
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
@@ -98,12 +87,6 @@ function love.draw()
     displayFPS()
     
     Push:finish()
-end
-
-function love.keypressed(key)
-    if key == 'escape' then
-        love.event.quit()
-    end
 end
 
 function displayFPS()
