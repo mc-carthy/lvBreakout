@@ -55,5 +55,5 @@ function Ball:update(dt)
 end
 
 function Ball:draw()
-    love.graphics.draw(textures.main, frames['balls'][self.skin], self.x, self.y)
+    love.graphics.draw(textures['main'], frames['balls'][self.skin], self.x, self.y)
 end

@@ -40,7 +40,8 @@ function love.load()
 
     frames = {
         ['paddles'] = GenerateQuadsPaddles(textures.main),
-        ['balls'] = GenerateQuadsBalls(textures.main)
+        ['balls'] = GenerateQuadsBalls(textures.main),
+        ['bricks'] = GenerateQuadsBricks(textures.main),
     }
 
     Push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
