@@ -3,9 +3,9 @@ Paddle = Class{}
 local distanceFromBottom = 32
 
 function Paddle:init()
-    self.width = 64
-    self.height = 16
-    self.x = VIRTUAL_WIDTH / 2 - self.width / 2
+    self.w = 64
+    self.h = 16
+    self.x = VIRTUAL_WIDTH / 2 - self.w / 2
     self.y = VIRTUAL_HEIGHT - distanceFromBottom
     self.dx = 0
     self.skin = 1
@@ -24,7 +24,7 @@ function Paddle:update(dt)
     if self.dx < 0 then
         self.x = math.max(0, self.x + self.dx * dt)
     else
-        self.x = math.min(VIRTUAL_WIDTH - self.width, self.x + self.dx * dt)
+        self.x = math.min(VIRTUAL_WIDTH - self.w, self.x + self.dx * dt)
     end
 end
 

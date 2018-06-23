@@ -5,18 +5,18 @@ function love.load()
     math.randomseed(os.time())
     
     sounds = {
-        ['paddle-hit'] = love.audio.newSource('assets/audio/paddle_hit.wav', 'static'),
+        ['paddleHit'] = love.audio.newSource('assets/audio/paddle_hit.wav', 'static'),
         ['score'] = love.audio.newSource('assets/audio/score.wav', 'static'),
-        ['wall-hit'] = love.audio.newSource('assets/audio/wall_hit.wav', 'static'),
+        ['wallHit'] = love.audio.newSource('assets/audio/wall_hit.wav', 'static'),
         ['confirm'] = love.audio.newSource('assets/audio/confirm.wav', 'static'),
         ['select'] = love.audio.newSource('assets/audio/select.wav', 'static'),
         ['no-select'] = love.audio.newSource('assets/audio/no-select.wav', 'static'),
-        ['brick-hit-1'] = love.audio.newSource('assets/audio/brick-hit-1.wav', 'static'),
-        ['brick-hit-2'] = love.audio.newSource('assets/audio/brick-hit-2.wav', 'static'),
+        ['brickHit1'] = love.audio.newSource('assets/audio/brick-hit-1.wav', 'static'),
+        ['brickHit2'] = love.audio.newSource('assets/audio/brick-hit-2.wav', 'static'),
         ['hurt'] = love.audio.newSource('assets/audio/hurt.wav', 'static'),
         ['victory'] = love.audio.newSource('assets/audio/victory.wav', 'static'),
         ['recover'] = love.audio.newSource('assets/audio/recover.wav', 'static'),
-        ['high-score'] = love.audio.newSource('assets/audio/high_score.wav', 'static'),
+        ['highScore'] = love.audio.newSource('assets/audio/high_score.wav', 'static'),
         ['pause'] = love.audio.newSource('assets/audio/pause.wav', 'static'),
 
         ['music'] = love.audio.newSource('assets/audio/music.wav', 'static')
@@ -39,7 +39,8 @@ function love.load()
     }
 
     frames = {
-        ['paddles'] = GenerateQuadsPaddles(textures.main)
+        ['paddles'] = GenerateQuadsPaddles(textures.main),
+        ['balls'] = GenerateQuadsBalls(textures.main)
     }
 
     Push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
