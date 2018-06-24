@@ -31,11 +31,11 @@ function love.load()
     love.graphics.setFont(fonts.small)
 
     textures = {
-        ['background'] = love.graphics.newImage('assets/images/background.png'),
-        ['main'] = love.graphics.newImage('assets/images/breakout.png'),
-        ['arrows'] = love.graphics.newImage('assets/images/arrows.png'),
-        ['hearts'] = love.graphics.newImage('assets/images/hearts.png'),
-        ['particle'] = love.graphics.newImage('assets/images/particle.png')
+        ['background'] = love.graphics.newImage('assets/sprites/background.png'),
+        ['main'] = love.graphics.newImage('assets/sprites/breakout.png'),
+        ['arrows'] = love.graphics.newImage('assets/sprites/arrows.png'),
+        ['hearts'] = love.graphics.newImage('assets/sprites/hearts.png'),
+        ['particle'] = love.graphics.newImage('assets/sprites/particle.png')
     }
 
     frames = {
@@ -55,7 +55,8 @@ function love.load()
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end,
         ['serve'] = function() return ServeState() end,
-        ['gameOver'] = function() return GameOverState() end
+        ['gameOver'] = function() return GameOverState() end,
+        ['victory'] = function() return VictoryState() end
     }
 
     stateMachine:change('start')

@@ -6,8 +6,18 @@ function PlayState:enter(params)
     self.health = params.health
     self.score = params.score
     self.ball = params.ball
+    self.level = params.level
     self.ball.dx = math.random(-200, 200)
     self.ball.dy = -100
+end
+
+function PlayState:checkVictory()
+    for k, brick in pairs(self.bricks) do
+        if brick.inPlay then
+            return false
+        end
+    end
+    return true
 end
 
 function PlayState:update(dt)
@@ -52,6 +62,18 @@ function PlayState:update(dt)
 
             brick:hit()
 
+            if self:checkVictory() then
+                sounds.victory:stop()
+                sounds.victory:play()
+                stateMachine:change('victory', {
+                    level = self.level,
+                    paddle = self.paddle,
+                    health = self.health,
+                    score = self.score,
+                    ball = self.ball
+                })
+            end
+
             -- TODO: Add rework the order of checks to prioritise vertical checks
             -- This is to prevent the ball intersecting from both horizontal and vertical directions
             -- By adding an offset to the horizontal collisions, we are prioritising vertical collisions
@@ -91,7 +113,8 @@ function PlayState:update(dt)
                 paddle = self.paddle,
                 bricks = self.bricks,
                 health = self.health,
-                score = self.score
+                score = self.score,
+                level = self.level
             })
         end
     end
