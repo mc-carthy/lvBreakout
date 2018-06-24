@@ -1,11 +1,13 @@
 PlayState = Class{ __includes = BaseState }
 
-function PlayState:init()
-    self.paddle = Paddle()
-    self.ball = Ball(math.random(7))
-    self.ball.dx = math.random(-100, 100)
+function PlayState:enter(params)
+    self.paddle = params.paddle
+    self.bricks = params.bricks
+    self.health = params.health
+    self.score = params.score
+    self.ball = params.ball
+    self.ball.dx = math.random(-200, 200)
     self.ball.dy = -100
-    self.bricks = LevelMaker.createMap()
 end
 
 function PlayState:update(dt)
@@ -77,13 +79,16 @@ function PlayState:update(dt)
 end
 
 function PlayState:draw()
-    self.paddle:draw()
-
     for k, brick in pairs(self.bricks) do
         brick:draw()
     end
-
+    
+    self.paddle:draw()
     self.ball:draw()
+
+    drawHealth(self.health)
+    drawScore(self.score)
+
     if self.paused then
         love.graphics.setFont(fonts.large)
         love.graphics.printf("PAUSED", 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'center')

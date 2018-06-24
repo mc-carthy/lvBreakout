@@ -10,7 +10,12 @@ function StartState:update(dt)
 
     if love.keyboard.wasPressed('space') or love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
         if highlighted == 1 then
-            stateMachine:change('play')
+            stateMachine:change('serve', {
+                paddle = Paddle(1),
+                bricks = LevelMaker.createMap(),
+                health = 3,
+                score = 0
+            })
         elseif highlighted == 2 then
             love.event.quit()
         end
