@@ -47,6 +47,7 @@ function PlayState:update(dt)
 
     for k, brick in pairs(self.bricks) do
         if brick.inPlay and self.ball:collides(brick) then
+            self.score = self.score + 10
             brick:hit()
 
             -- TODO: Add rework the order of checks to prioritise vertical checks
