@@ -2,10 +2,14 @@ StartState = Class{ __includes = BaseState }
 
 local highlighted = 1
 
+function StartState:enter(params)
+    self.highScores = params.highScores
+end
+
 function StartState:update(dt)
     if love.keyboard.wasPressed('up') or love.keyboard.wasPressed('down') then
         highlighted = highlighted == 1 and 2 or 1
-        sounds['paddle-hit']:play()
+        sounds['paddleHit']:play()
     end
 
     if love.keyboard.wasPressed('space') or love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
@@ -18,7 +22,9 @@ function StartState:update(dt)
                 level = 1
             })
         elseif highlighted == 2 then
-            love.event.quit()
+            stateMachine:change('highScores', {
+                highScores = self.highScores
+            })        
         end
     end
 
