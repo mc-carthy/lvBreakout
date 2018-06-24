@@ -14,12 +14,7 @@ function StartState:update(dt)
 
     if love.keyboard.wasPressed('space') or love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
         if highlighted == 1 then
-            stateMachine:change('serve', {
-                paddle = Paddle(1),
-                bricks = LevelMaker.createMap(1),
-                health = 3,
-                score = 0,
-                level = 1,
+            stateMachine:change('paddleSelect', {
                 highScores = self.highScores
             })
         elseif highlighted == 2 then

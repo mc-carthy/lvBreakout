@@ -2,13 +2,13 @@ Paddle = Class{}
 
 local distanceFromBottom = 32
 
-function Paddle:init()
+function Paddle:init(skin)
     self.w = 64
     self.h = 16
     self.x = VIRTUAL_WIDTH / 2 - self.w / 2
     self.y = VIRTUAL_HEIGHT - distanceFromBottom
     self.dx = 0
-    self.skin = 1
+    self.skin = skin
     self.size = 2
 end
 

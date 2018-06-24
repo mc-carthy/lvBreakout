@@ -10,7 +10,7 @@ function love.load()
         ['wallHit'] = love.audio.newSource('assets/audio/wall_hit.wav', 'static'),
         ['confirm'] = love.audio.newSource('assets/audio/confirm.wav', 'static'),
         ['select'] = love.audio.newSource('assets/audio/select.wav', 'static'),
-        ['no-select'] = love.audio.newSource('assets/audio/no-select.wav', 'static'),
+        ['noSelect'] = love.audio.newSource('assets/audio/no-select.wav', 'static'),
         ['brickHit1'] = love.audio.newSource('assets/audio/brick-hit-1.wav', 'static'),
         ['brickHit2'] = love.audio.newSource('assets/audio/brick-hit-2.wav', 'static'),
         ['hurt'] = love.audio.newSource('assets/audio/hurt.wav', 'static'),
@@ -42,7 +42,8 @@ function love.load()
         ['paddles'] = GenerateQuadsPaddles(textures.main),
         ['balls'] = GenerateQuadsBalls(textures.main),
         ['bricks'] = GenerateQuadsBricks(textures.main),
-        ['hearts'] = GenerateQuads(textures.hearts, 10, 9)
+        ['hearts'] = GenerateQuads(textures.hearts, 10, 9),
+        ['arrows'] = GenerateQuads(textures.arrows, 24, 24)
     }
 
     Push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
@@ -58,7 +59,8 @@ function love.load()
         ['gameOver'] = function() return GameOverState() end,
         ['victory'] = function() return VictoryState() end,
         ['highScores'] = function() return HighScoreState() end,
-        ['enterHighScore'] = function() return EnterHighScoreState() end
+        ['enterHighScore'] = function() return EnterHighScoreState() end,
+        ['paddleSelect'] = function() return PaddleSelectState() end
     }
 
     stateMachine:change('start', {
