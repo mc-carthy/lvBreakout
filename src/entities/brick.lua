@@ -14,7 +14,26 @@ end
 function Brick:hit()
     sounds.brickHit2:stop()
     sounds.brickHit2:play()
-    self.inPlay = false
+
+    if self.tier > 0 then
+        if self.colour == 1 then
+            self.tier = self.tier - 1
+            self.colour = 5
+        else
+            self.colour = self.colour - 1
+        end
+    else
+        if self.colour <= 1 then
+            self.inPlay = false
+        else
+            self.colour = self.colour - 1
+        end
+    end
+
+    if not self.inPlay then
+        sounds.brickHit1:stop()
+        sounds.brickHit1:play()
+    end
 end
 
 function Brick:draw()
