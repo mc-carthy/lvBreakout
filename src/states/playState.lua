@@ -73,6 +73,26 @@ function PlayState:update(dt)
         end
     end
 
+
+    if self.ball.y >= VIRTUAL_HEIGHT then
+        self.health = self.health - 1
+        sounds['hurt']:stop()
+        sounds['hurt']:play()
+        
+        if self.health <= 0 then
+            stateMachine:change('gameOver', {
+                score = self.score
+            })
+        else
+            stateMachine:change('serve', {
+                paddle = self.paddle,
+                bricks = self.bricks,
+                health = self.health,
+                score = self.score
+            })
+        end
+    end
+
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
     end

@@ -45,13 +45,6 @@ function Ball:update(dt)
         self.dy = -self.dy
         sounds.wallHit:play()
     end
-
-
-    if self.y >= VIRTUAL_HEIGHT - BALL_SIZE then
-        self.y = VIRTUAL_HEIGHT - BALL_SIZE
-        self.dy = -self.dy
-        sounds.wallHit:play()
-    end
 end
 
 function Ball:draw()
