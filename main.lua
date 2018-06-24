@@ -57,7 +57,8 @@ function love.load()
         ['serve'] = function() return ServeState() end,
         ['gameOver'] = function() return GameOverState() end,
         ['victory'] = function() return VictoryState() end,
-        ['highScores'] = function() return HighScoreState() end
+        ['highScores'] = function() return HighScoreState() end,
+        ['enterHighScore'] = function() return EnterHighScoreState() end
     }
 
     stateMachine:change('start', {

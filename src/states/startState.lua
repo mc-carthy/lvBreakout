@@ -19,7 +19,8 @@ function StartState:update(dt)
                 bricks = LevelMaker.createMap(1),
                 health = 3,
                 score = 0,
-                level = 1
+                level = 1,
+                highScores = self.highScores
             })
         elseif highlighted == 2 then
             stateMachine:change('highScores', {
