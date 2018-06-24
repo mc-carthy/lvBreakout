@@ -46,6 +46,7 @@ function PlayState:update(dt)
     end
 
     for k, brick in pairs(self.bricks) do
+        brick:update(dt)
         if brick.inPlay and self.ball:collides(brick) then
             self.score = self.score + (brick.tier * 200 + brick.colour * 20)
 
@@ -103,6 +104,7 @@ end
 function PlayState:draw()
     for k, brick in pairs(self.bricks) do
         brick:draw()
+        brick:drawParticles()
     end
     
     self.paddle:draw()
