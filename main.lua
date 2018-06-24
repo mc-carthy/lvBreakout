@@ -67,6 +67,9 @@ function love.load()
         highScores = loadHighScores()
     })
 
+    sounds.music:setLooping(true)
+    sounds.music:play()
+
     love.keyboard.keysPressed = {}
 end
 
